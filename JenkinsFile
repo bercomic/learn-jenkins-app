@@ -2,6 +2,12 @@ pipeline {
     agent any
 
     stages {
+        stage('Install') {
+            steps {
+                sh 'npm install'
+      }
+    }
+        
         stage('Build') {
             agent {
                 docker {
@@ -11,6 +17,7 @@ pipeline {
             }
             steps {
                 sh '''
+
                     ls -la
                     node --version
                     npm --version
